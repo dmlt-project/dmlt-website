@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMLT — Social Media &amp; Digital</title>
+<style>
+:root{--navy:#10365c;--teal:#078b9a;--teal2:#16b6b0;--aqua:#dff8f6;--ink:#123b60}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#d9f1f1;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:
+radial-gradient(circle at 10% 18%,rgba(31,190,186,.32),transparent 26%),
+radial-gradient(circle at 90% 16%,rgba(91,199,206,.38),transparent 28%),
+radial-gradient(circle at 50% 100%,rgba(5,124,147,.24),transparent 38%),
+linear-gradient(135deg,#eafafa 0%,#bce9e8 48%,#e3f5f4 100%)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;opacity:.2;pointer-events:none;background-image:
+linear-gradient(90deg,transparent 49.7%,rgba(7,139,154,.12) 50%,transparent 50.3%),
+linear-gradient(transparent 49.7%,rgba(7,139,154,.12) 50%,transparent 50.3%);background-size:54px 54px}
+header{height:100px;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:10px clamp(18px,4vw,64px);box-shadow:0 5px 24px rgba(14,83,111,.12);position:sticky;top:0;z-index:10}
+.brand img{width:190px;height:78px;object-fit:contain;display:block}
+nav{display:flex;align-items:center;gap:clamp(10px,2vw,30px);flex-wrap:wrap;justify-content:flex-end}
+nav a{text-decoration:none;color:#12365e;font-weight:750;font-size:15px;padding:12px 16px;border-radius:28px;white-space:nowrap}
+nav a.active{color:white;background:linear-gradient(110deg,#087f91,#13b9ad);box-shadow:0 7px 18px rgba(8,143,157,.25)}
+nav a:hover{background:#e0f7f5}
+main{width:min(1440px,94vw);margin:30px auto 64px}
+.hero{position:relative;overflow:hidden;border-radius:30px;padding:26px clamp(24px,3vw,48px);background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.95);box-shadow:0 18px 48px rgba(9,89,111,.14);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.hero:after{content:"";position:absolute;width:310px;height:310px;border-radius:50%;right:3%;top:-155px;background:radial-gradient(circle,rgba(28,185,179,.18),rgba(28,185,179,0) 70%);pointer-events:none}
+.back{display:inline-block;text-decoration:none;color:#078b9a;font-weight:800;margin-bottom:18px}
+h1{font-size:clamp(36px,4.4vw,64px);line-height:1.05;margin:0 0 12px;color:#10365c;letter-spacing:-1.8px}
+h1 span{background:linear-gradient(100deg,#078b9a,#20b7ac);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:clamp(16px,1.3vw,20px);color:#426b88;margin:0;line-height:1.5}
+.hero-art{width:220px;min-width:150px;height:150px;border-radius:32px;background:linear-gradient(135deg,#d8fbf6,#efffff);display:grid;place-items:center;font-size:82px;box-shadow:inset 0 0 0 1px white;transform:rotate(2deg)}
+.section-title{font-size:clamp(25px,2.5vw,34px);margin:34px 0 18px;color:#10365c;letter-spacing:-.7px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.video-card{background:rgba(255,255,255,.93);border:1px solid rgba(255,255,255,.98);border-radius:24px;padding:18px;box-shadow:0 12px 30px rgba(7,87,111,.13);transition:transform .2s,box-shadow .2s}
+.video-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(7,87,111,.2)}
+.card-heading{display:flex;align-items:center;gap:14px;margin:0 0 14px}
+.number{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#087f91,#18b9ad);color:white;display:grid;place-items:center;font-weight:900;font-size:20px;flex-shrink:0;box-shadow:0 5px 12px rgba(8,143,157,.25)}
+h2{font-size:clamp(19px,1.65vw,25px);margin:0;color:#12365e;line-height:1.2}
+video{width:100%;display:block;aspect-ratio:16/9;object-fit:contain;background:#102c43;border-radius:16px;box-shadow:0 5px 14px rgba(9,52,76,.15)}
+footer{text-align:center;color:#47738a;font-size:14px;padding:10px 0 28px}
+@media(max-width:900px){header{height:auto;align-items:flex-start;gap:12px;flex-direction:column}.brand img{width:160px;height:65px}nav{justify-content:flex-start}.grid{grid-template-columns:1fr}.hero-art{width:130px;height:130px;font-size:66px}}
+@media(max-width:560px){main{width:92vw;margin-top:18px}.hero{padding:22px;display:block}.hero-art{display:none}nav a{font-size:13px;padding:9px 11px}.video-card{padding:13px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html" aria-label="DMLT Home"><img src="dmlt-logo.png" alt="DMLT — Digital Metaphor Literacy Toolkit"></a>
+  <nav aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a class="active" href="metaphor-dictionary.html">Metaphor Dictionary</a>
+    <a href="decoding-strategies.html">Decoding Strategies</a>
+    <a href="interactive-tasks.html">Interactive Tasks</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <a class="back" href="metaphor-dictionary.html">← Back to Metaphor Dictionary</a>
+      <h1>Social Media <span>and Digital Metaphors</span></h1>
+      <p>Watch each video to discover the hidden meaning behind a familiar expression.</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">📱</div>
+  </section>
+  <h2 class="section-title">Explore the collection</h2>
+  <section class="grid" aria-label="Metaphor videos">
+    <article class="video-card">
+  <div class="card-heading"><span class="number">1</span><h2>“The tea is hot”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/01-the-tea-is-hot.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+<article class="video-card">
+  <div class="card-heading"><span class="number">2</span><h2>“Living rent-free in my head”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/02-living-rent-free-in-my-head.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+<article class="video-card">
+  <div class="card-heading"><span class="number">3</span><h2>“Touch grass”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/03-touch-grass.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+<article class="video-card">
+  <div class="card-heading"><span class="number">4</span><h2>“That hit different”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/04-that-hit-different.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+<article class="video-card">
+  <div class="card-heading"><span class="number">5</span><h2>“This video is gold”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/05-this-video-is-gold.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+<article class="video-card">
+  <div class="card-heading"><span class="number">6</span><h2>“Cooked”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/06-cooked.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+<article class="video-card">
+  <div class="card-heading"><span class="number">7</span><h2>“He’s cooking”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/07-hes-cooking.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+<article class="video-card">
+  <div class="card-heading"><span class="number">8</span><h2>“Information is a digital river”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/08-information-is-a-digital-river.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+<article class="video-card">
+  <div class="card-heading"><span class="number">9</span><h2>“The editing is top-tier”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/09-the-editing-is-top-tier.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+<article class="video-card">
+  <div class="card-heading"><span class="number">10</span><h2>“This channel is top notch”</h2></div>
+  <video controls preload="metadata" playsinline>
+    <source src="videos/10-this-channel-is-top-notch.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</article>
+  </section>
+</main>
+<footer>Digital Metaphor Literacy Toolkit · DMLT</footer>
+</body>
+</html>
