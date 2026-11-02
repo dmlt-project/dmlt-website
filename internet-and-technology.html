@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e9edf5">
+<title>DMLT — Internet &amp; Technology</title>
+<style>
+:root{--navy:#12365f;--blue:#168ee8;--cyan:#39d9ff;--purple:#a84bff;--panel:rgba(248,252,255,.96)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;overflow-x:hidden;position:relative;isolation:isolate;
+  color:var(--navy);font-family:Inter,"Segoe UI",Arial,sans-serif;
+  background:#06133b url("internet-tech-background.png") center center/cover fixed no-repeat;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:linear-gradient(90deg,rgba(3,9,38,.48),rgba(4,22,65,.78) 22%,rgba(4,22,65,.80) 78%,rgba(3,9,38,.48));
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.17;
+  background:linear-gradient(rgba(58,202,255,.16) 1px,transparent 1px),
+             linear-gradient(90deg,rgba(58,202,255,.16) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+header{
+  width:100%;min-height:96px;margin:0;padding:12px 3.2%;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  background:rgba(241,244,250,.97);border-bottom:1px solid rgba(255,255,255,.85);
+  box-shadow:0 5px 22px rgba(5,27,55,.14);position:relative;z-index:3;
+}
+.logo-link{display:flex;align-items:center;flex:0 0 auto}
+.logo{height:66px;width:auto;max-width:230px;object-fit:contain;display:block}
+nav{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:5px}
+nav a{
+  color:var(--navy);text-decoration:none;font-weight:800;font-size:14px;
+  padding:12px 14px;border-radius:28px;white-space:nowrap;transition:.2s ease;
+}
+nav a:hover{background:#e0e9f6}
+nav a.active{
+  color:#fff;background:linear-gradient(110deg,#a42cf0,#3189f2);
+  box-shadow:0 6px 16px rgba(99,70,220,.27);
+}
+main{width:min(1320px,calc(100% - 56px));margin:34px auto 65px;position:relative;z-index:1}
+.hero{
+  padding:30px 34px 32px;border-radius:25px;background:var(--panel);
+  border:1px solid rgba(255,255,255,.94);box-shadow:0 13px 34px rgba(0,8,35,.28);
+}
+.back{display:inline-block;margin-bottom:15px;color:#087fba;text-decoration:none;font-size:14px;font-weight:850}
+.back:hover{text-decoration:underline}
+.hero h1{
+  display:inline-block;margin:0 0 14px;padding:10px 18px;border-radius:17px;
+  background:rgba(238,243,250,.98);color:#23466e;
+  font-size:clamp(35px,4.2vw,55px);line-height:1.08;letter-spacing:-1.3px;font-weight:950;
+}
+.hero h1 span{
+  background:linear-gradient(90deg,#147ee7,#8b43e8);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{max-width:900px;margin:0;color:#52718e;font-size:17px;line-height:1.6}
+.section-title{
+  display:inline-block;margin:28px 0 18px;padding:8px 17px;border-radius:15px;
+  background:rgba(245,249,255,.97);color:#173f67;
+  font-size:clamp(25px,2.7vw,34px);font-weight:900;
+}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{
+  min-width:0;padding:19px;border-radius:21px;background:var(--panel);
+  border:1px solid rgba(255,255,255,.94);box-shadow:0 9px 25px rgba(0,8,35,.28);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,8,35,.38)}
+.card-head{display:flex;align-items:flex-start;gap:12px;min-height:46px;margin-bottom:13px}
+.number{
+  flex:0 0 40px;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;
+  color:#fff;font-size:18px;font-weight:900;
+  background:linear-gradient(135deg,#147ee7,#a34bfa);box-shadow:0 4px 12px rgba(50,115,235,.25);
+}
+.card h2{margin:3px 0 0;color:#153e65;font-size:clamp(18px,1.7vw,22px);line-height:1.3;font-weight:900}
+.video-wrap{width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:14px;background:#071326;box-shadow:0 5px 14px rgba(0,20,40,.2)}
+.video-wrap video{display:block;width:100%;height:100%;object-fit:contain;background:#071326}
+.footer-note{margin:27px 0 0;color:#e4f6ff;text-align:center;font-size:14px;opacity:.95;text-shadow:0 1px 5px #001}
+@media(max-width:1050px){
+  header{padding:12px 2%;gap:12px}.logo{height:59px;max-width:190px}
+  nav a{font-size:12px;padding:10px 9px}
+}
+@media(max-width:700px){
+  header{display:block;padding:10px 12px}
+  .logo{height:57px;margin:0 auto 8px}.logo-link{justify-content:center}
+  nav{justify-content:center;gap:2px}nav a{font-size:10px;padding:8px 7px}
+  main{width:calc(100% - 22px);margin:18px auto 40px}
+  .hero{padding:23px 19px;border-radius:20px}
+  .back{font-size:13px}.hero h1{font-size:35px;padding:8px 12px}
+  .hero p{font-size:15px}.section-title{font-size:24px;margin:22px 0 13px}
+  .cards{grid-template-columns:1fr;gap:14px}.card{padding:14px}.card h2{font-size:19px}
+  .number{flex-basis:38px;width:38px;height:38px;font-size:17px}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo-link" href="index.html" aria-label="DMLT Home">
+    <img class="logo" src="dmlt-logo.png" alt="DMLT — Digital Metaphor Literacy Toolkit">
+  </a>
+  <nav aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a class="active" href="metaphor-dictionary.html">Metaphor Dictionary</a>
+    <a href="decoding-strategies.html">Decoding Strategies</a>
+    <a href="interactive-tasks.html">Interactive Tasks</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <a class="back" href="metaphor-dictionary.html">← Back to Metaphor Dictionary</a>
+    <h1>Internet &amp; <span>Technology</span></h1>
+    <p>Explore how digital life, artificial intelligence, online platforms and engineering are described through creative metaphors.</p>
+  </section>
+  <h2 class="section-title">Explore internet and technology metaphors</h2>
+  <section class="cards" aria-label="Internet and technology metaphor videos">
+    <article class="card"><div class="card-head"><span class="number">1</span><h2>“A simulation”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/01-a-simulation.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+    <article class="card"><div class="card-head"><span class="number">2</span><h2>“Glitch in the Matrix”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/01-glitch-in-the-matrix.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+    <article class="card"><div class="card-head"><span class="number">3</span><h2>“Maybe your feed knows your heart”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/03-maybe-your-feed-knows-your-heart.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+    <article class="card"><div class="card-head"><span class="number">4</span><h2>“The future is AI”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/04-the-future-is-ai.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+    <article class="card"><div class="card-head"><span class="number">5</span><h2>“Every match is Prime”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/05-every-match-is-prime.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+    <article class="card"><div class="card-head"><span class="number">6</span><h2>“It’s peak.”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/06-its-peak.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+    <article class="card"><div class="card-head"><span class="number">7</span><h2>“He is the automation”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/07-he-is-the-automation.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+    <article class="card"><div class="card-head"><span class="number">8</span><h2>“He is a thinking machine”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/08-he-is-a-thinking-machine.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+    <article class="card"><div class="card-head"><span class="number">9</span><h2>“The balance lamp is actually the game changer”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/09-the-balance-lamp-game-changer.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+    <article class="card"><div class="card-head"><span class="number">10</span><h2>“An absolute engineering behemoth”</h2></div><div class="video-wrap"><video controls preload="metadata" playsinline><source src="videos/10-absolute-engineering-behemoth.mp4" type="video/mp4">Your browser does not support HTML video.</video></div></article>
+  </section>
+  <p class="footer-note">Digital Metaphor Literacy Toolkit · Internet &amp; Technology</p>
+</main>
+</body>
+</html>
