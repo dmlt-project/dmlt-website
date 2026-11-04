@@ -48,6 +48,21 @@ h1 span{background:linear-gradient(100deg,#12365e 5%,#6330cf 58%,#087bc8);-webki
 .search-icon{font-size:22px;color:#173e70;padding-left:5px}
 .search-panel input{border:0;outline:0;background:transparent;flex:1;min-width:0;font-size:clamp(17px,1.2vw,21px);color:#173e70;padding:10px 0;font-family:inherit}
 .search-panel input::placeholder{color:#7187a2}
+
+.search-panel button{border:0;border-radius:14px;padding:13px 22px;background:linear-gradient(110deg,#a72df4,#2c91f5);color:#fff;font:800 15px inherit;font-family:inherit;cursor:pointer;box-shadow:0 6px 16px rgba(116,72,235,.2);transition:transform .2s,filter .2s}
+.search-panel button:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.search-panel button.clear-search{background:#eaf2ff;color:#31577f;box-shadow:none}
+.search-results{display:none;margin-top:18px;padding:22px 24px;border:1px solid rgba(169,202,240,.68);border-radius:22px;background:rgba(255,255,255,.94);box-shadow:0 12px 34px rgba(46,100,159,.07)}
+.search-results.visible{display:block}
+.search-results h2{margin:0 0 14px;color:#12365e;font-size:clamp(19px,1.5vw,25px)}
+.search-result-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.search-result{display:block;padding:15px 17px;border-radius:15px;text-decoration:none;color:#173e70;background:linear-gradient(135deg,#eef7ff,#f7efff);border:1px solid #dce9fa;transition:transform .18s,box-shadow .18s}
+.search-result:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(46,100,159,.12)}
+.search-result strong{display:block;margin-bottom:5px;font-size:16px}
+.search-result span{font-size:13px;color:#587392;line-height:1.45}
+.search-empty{margin:0;color:#587392;line-height:1.55}
+@media(max-width:720px){.search-panel{flex-wrap:wrap}.search-panel input{flex:1 1 calc(100% - 50px)}.search-panel button{flex:1}.search-panel button.clear-search{flex:0 0 auto}}
+
 @media(max-width:1120px){.nav{gap:12px}.brand{min-width:auto}.brand img{width:118px;height:78px}.brand span{display:none}nav a{padding:10px 11px;font-size:13px}.categories{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:720px){header{position:relative}.nav{align-items:flex-start;flex-direction:column;gap:8px}.brand span{display:inline}.brand img{width:100px;height:68px}nav{margin:0;justify-content:flex-start;width:100%;gap:3px}nav a{font-size:12px;padding:9px 10px}main{padding-top:26px}.collection{align-items:flex-start;padding:18px;gap:14px}.collection-icon{flex-basis:48px;height:48px;font-size:24px}.collection h2{font-size:19px}.collection p{font-size:14px}.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.category{min-height:155px;padding:17px 14px}.category h3{font-size:15px}.category p{font-size:13px}.search-panel{padding:12px 14px}.search-panel input{font-size:15px}}
 @media(max-width:420px){.categories{grid-template-columns:1fr}.category{min-height:auto}.category .emoji{margin-bottom:8px}}
@@ -91,8 +106,152 @@ h1 span{background:linear-gradient(100deg,#12365e 5%,#6330cf 58%,#087bc8);-webki
   </section>
   <div class="search-panel" role="search">
     <span class="search-icon" aria-hidden="true">⌕</span>
-    <input type="search" aria-label="Search metaphors" placeholder="Search a metaphor, meaning, or keyword...">
+    <input id="metaphorSearch" type="search" aria-label="Search metaphors" placeholder="Search a metaphor, meaning, or keyword..." autocomplete="off">
+    <button id="searchButton" type="button">Search</button>
+    <button id="clearSearch" class="clear-search" type="button" aria-label="Clear search">Clear</button>
   </div>
+  <section id="searchResults" class="search-results" aria-live="polite" aria-label="Search results">
+    <h2 id="resultsHeading">Search results</h2>
+    <div id="resultsList" class="search-result-list"></div>
+  </section>
 </main>
+<script>
+(() => {
+  const input = document.getElementById('metaphorSearch');
+  const searchButton = document.getElementById('searchButton');
+  const clearButton = document.getElementById('clearSearch');
+  const results = document.getElementById('searchResults');
+  const heading = document.getElementById('resultsHeading');
+  const list = document.getElementById('resultsList');
+
+  // The index contains examples visible in the DMLT project materials.
+  // Category links let learners continue exploring the full collection.
+  const metaphors = [
+{ title: '“Dreams are worth chasing”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'dreams goals ambitions chasing hope motivation' },
+    { title: '“I’m drowning in homework”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'drowning homework overloaded too much work pressure' },
+    { title: '“In my feelings”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'feelings emotions mood' },
+    { title: '“The way tech is evolving blows my mind”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'technology tech evolving blows mind surprise amazed' },
+    { title: '“I think the world is healing”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'world healing hope recovery' },
+    { title: '“They are angels without wings”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'angels kindness helpful people good' },
+    { title: '“He is a red flag”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'red flag warning danger relationship' },
+    { title: '“This is a green flag”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'green flag positive sign good quality' },
+    { title: '“Drowning in stress”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'stress stressed pressure overwhelmed anxiety' },
+    {"title": "“Break the ice”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " break the ice "},
+    {"title": "“Spill the beans”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " spill the beans "},
+    {"title": "“Walking on eggshells”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " walking on eggshells "},
+    {"title": "“Old is gold”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " old is gold "},
+    {"title": "“He nailed it”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " he nailed it "},
+    {"title": "“She’s on fire”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " she s on fire "},
+    {"title": "“The tea is hot”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " the tea is hot "},
+    {"title": "“Living rent-free in my head”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " living rent-free in my head "},
+    {"title": "“Touch grass”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " touch grass "},
+    {"title": "“That hit different”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " that hit different "},
+    {"title": "“This video is gold”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " this video is gold "},
+    {"title": "“Cooked”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " cooked "},
+    {"title": "“He’s cooking”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " he s cooking "},
+    {"title": "“Information is a digital river”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " information is a digital river "},
+    {"title": "“The editing is top-tier”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " the editing is top-tier "},
+    {"title": "“This channel is top notch”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " this channel is top notch "},
+    {"title": "“A simulation”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " a simulation "},
+    {"title": "“Glitch in the Matrix”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " glitch in the matrix "},
+    {"title": "“Maybe your feed knows your heart”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " maybe your feed knows your heart "},
+    {"title": "“The future is AI”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " the future is ai "},
+    {"title": "“Every match is Prime”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " every match is prime "},
+    {"title": "“It’s peak.”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " it s peak  "},
+    {"title": "“He is the automation”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " he is the automation "},
+    {"title": "“He is a thinking machine”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " he is a thinking machine "},
+    {"title": "“The balance lamp is actually the game changer”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " the balance lamp is actually the game changer "},
+    {"title": "“An absolute engineering behemoth”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " an absolute engineering behemoth "},
+    {"title": "“The internet is a cloud of knowledge”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " the internet is a cloud of knowledge "},
+    {"title": "“She is a fashion queen”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " she is a fashion queen "},
+    {"title": "“She is fire”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " she is fire "},
+    {"title": "“He is God of Soccer”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " he is god of soccer "},
+    {"title": "“He is the king”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " he is the king "},
+    {"title": "“She is the pop culture icon forever”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " she is the pop culture icon forever "},
+    {"title": "“She was the blueprint”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " she was the blueprint "},
+    {"title": "“You’re the inspiration”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " you re the inspiration "},
+    {"title": "“A circus”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " a circus "},
+    {"title": "“A zoo”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " a zoo "},
+    {"title": "“Serving face”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " serving face "},
+    {"title": "“Mystery boxes”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " mystery boxes "},
+    {"title": "“Enemy of unemployment”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " enemy of unemployment "},
+    {"title": "“Spitting bars every second”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " spitting bars every second "},
+    {"title": "“You are a hidden gem”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " you are a hidden gem "}
+  ];
+
+  const categoryData = [
+    { title: 'Everyday Metaphors', description: 'Expressions you hear and use often', url: './everyday-metaphors.html', keywords: 'everyday daily common life routine expressions' },
+    { title: 'Social Media & Digital', description: 'Language shaped by online life', url: './social-media-digital.html', keywords: 'social media digital online internet comments posts viral hashtags' },
+    { title: 'Emotions & Reactions', description: 'How figurative language expresses feelings', url: './emotions-and-reactions.html', keywords: 'emotions feelings reactions stress dreams mood heart' },
+    { title: 'Internet & Technology', description: 'Metaphors for connected worlds', url: './internet-and-technology.html', keywords: 'internet technology tech connected world computer' },
+    { title: 'Creative & Humorous', description: 'Play with meaning and perspective', url: './creative-and-humorous.html', keywords: 'creative humorous humour humor funny jokes playful perspective' }
+  ];
+
+  const normalize = value => value.toLocaleLowerCase().replace(/[“”"'’]/g, '').replace(/[^a-z0-9\s-]/g, ' ').replace(/\s+/g, ' ').trim();
+
+  function runSearch() {
+    const query = normalize(input.value);
+    if (!query) {
+      results.classList.remove('visible');
+      list.replaceChildren();
+      input.focus();
+      return;
+    }
+
+    const terms = query.split(' ').filter(Boolean);
+    const metaphorMatches = metaphors.filter(item => {
+      const haystack = normalize(item.title + ' ' + item.category + ' ' + item.keywords);
+      return terms.every(term => haystack.includes(term));
+    });
+    const categoryMatches = categoryData.filter(item => {
+      const haystack = normalize(item.title + ' ' + item.description + ' ' + item.keywords);
+      return terms.every(term => haystack.includes(term));
+    });
+
+    list.replaceChildren();
+    const matches = [
+      ...metaphorMatches.map(item => ({ title: item.title, description: item.category + ' · Open this category to watch the video', url: item.url })),
+      ...categoryMatches.map(item => ({ title: item.title, description: item.description, url: item.url }))
+    ];
+
+    if (matches.length) {
+      heading.textContent = `Results for “${input.value.trim()}” (${matches.length})`;
+      matches.forEach(item => {
+        const link = document.createElement('a');
+        link.className = 'search-result';
+        link.href = item.url;
+        const title = document.createElement('strong');
+        title.textContent = item.title;
+        const description = document.createElement('span');
+        description.textContent = item.description;
+        link.append(title, description);
+        list.append(link);
+      });
+    } else {
+      heading.textContent = 'No results found';
+      const message = document.createElement('p');
+      message.className = 'search-empty';
+      message.textContent = 'No metaphors found. Try another keyword.';
+      list.append(message);
+    }
+    results.classList.add('visible');
+  }
+
+  searchButton.addEventListener('click', runSearch);
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Enter') runSearch();
+  });
+  input.addEventListener('input', () => {
+    if (input.value.trim()) runSearch();
+    else results.classList.remove('visible');
+  });
+  clearButton.addEventListener('click', () => {
+    input.value = '';
+    results.classList.remove('visible');
+    list.replaceChildren();
+    input.focus();
+  });
+})();
+</script>
 </body>
 </html>
