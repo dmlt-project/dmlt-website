@@ -24,18 +24,19 @@ main{max-width:1180px;margin:auto;padding:48px 22px 70px}.hero{text-align:center
 @media(max-width:700px){.hero{padding:35px 18px 30px;background-position:34% center}.hero:before{content:"";position:absolute;inset:0;background:rgba(7,17,48,.54);z-index:0}.detective-banner{min-height:250px;justify-content:center;background-position:36% center}.detective-banner:before{content:"";position:absolute;inset:0;background:rgba(7,17,48,.56);z-index:0}.detective-banner-copy{position:relative;z-index:1}}
 
 
-/* Clean hero panel: keep the page-wide neon background, remove the busy artwork behind the title */
+/* Clean hero panel: keep decorative artwork in the page background, not behind the title. */
 .hero{
-  background-image:
-    radial-gradient(circle at 18% 50%, rgba(40,190,255,.20), transparent 34%),
-    radial-gradient(circle at 84% 35%, rgba(191,75,255,.20), transparent 38%),
-    linear-gradient(120deg, rgba(8,34,91,.97), rgba(31,39,111,.96) 55%, rgba(55,29,105,.97)) !important;
-  background-color:#10265f;
-  border:1px solid rgba(133,218,255,.52);
-  box-shadow:0 22px 58px rgba(0,0,0,.28), inset 0 0 45px rgba(89,156,255,.10);
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:linear-gradient(125deg,#102d68 0%,#263b83 52%,#3a286f 100%) !important;
+  border:1px solid rgba(157,220,255,.48);
+  border-radius:28px;
+  box-shadow:0 18px 48px rgba(0,0,0,.28),inset 0 0 45px rgba(108,190,255,.08);
 }
-.hero h1{ text-shadow:0 3px 18px rgba(4,12,40,.38); }
-.hero .eyebrow,.hero-art span{ background:rgba(5,20,58,.42); }
+.hero:before{display:none !important}
+.hero>*{position:relative;z-index:1}
+.hero h1{text-shadow:none}
 
 </style>
 </head>
@@ -69,35 +70,7 @@ main{max-width:1180px;margin:auto;padding:48px 22px 70px}.hero{text-align:center
 <article class="step s6"><div class="step-top"><span class="number">STEP 06</span><span class="emoji">✍️</span></div><h3>EXPLAIN IT YOUR WAY</h3><div class="hook">Make the meaning clear.</div><p>Explain the metaphor in your own words. Rewrite it using simple, clear English.</p><span class="mini">SHARE YOUR DISCOVERY</span></article>
 </div>
 </section>
-<section class="challenge" aria-labelledby="challenge-title">
-<div class="challenge-head"><div class="challenge-icon">🕵️</div><div><div class="challenge-label">PUT YOUR SKILLS TO THE TEST</div><h2 id="challenge-title">DETECTIVE CHALLENGE</h2></div></div>
-<div class="prompt"><small>THE COMMENT YOU FOUND</small>“This song is fire!” 🔥</div>
-<div class="question">What does the person really mean?</div>
-<div class="options">
-<label class="option"><input type="radio" name="answer" value="a"> The song is burning.</label>
-<label class="option"><input type="radio" name="answer" value="b"> The song is amazing.</label>
-<label class="option"><input type="radio" name="answer" value="c"> The song is very hot.</label>
-</div>
-<button class="check" id="checkAnswer" type="button">CHECK MY ANSWER <span aria-hidden="true">→</span></button>
-<div class="feedback" id="feedback" role="status" aria-live="polite"></div>
-</section>
-<div class="footer-note">✨ Great detectives do not stop at the words — they discover the meaning behind them! ✨</div>
+
 </main>
-<script>
-const checkButton=document.getElementById('checkAnswer');
-const feedback=document.getElementById('feedback');
-checkButton.addEventListener('click',()=>{
- const selected=document.querySelector('input[name="answer"]:checked');
- feedback.className='feedback show';
- if(!selected){feedback.classList.add('try');feedback.textContent='Choose an answer first, detective! 🔎';return;}
- if(selected.value==='b'){
-  feedback.classList.add('good');
-  feedback.textContent='Correct! 🎉 “Fire” is used figuratively to say that the song is excellent, exciting or really good. You cracked the code!';
- }else{
-  feedback.classList.add('try');
-  feedback.textContent='Not quite! 💡 Think about how people use “fire” in a positive online comment. Try again!';
- }
-});
-</script>
 </body>
 </html>
