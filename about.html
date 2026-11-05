@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMLT — About the Project</title>
+<style>
+:root{--navy:#091a49;--purple:#6749e8;--cyan:#42dff1;--ink:#202746;--muted:#68738f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#fff;background:#081947;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 8% 20%,rgba(0,174,255,.27),transparent 32%),radial-gradient(ellipse at 88% 18%,rgba(169,53,255,.28),transparent 34%),radial-gradient(ellipse at 52% 100%,rgba(0,207,225,.17),transparent 36%),linear-gradient(135deg,#06153d,#101b58 52%,#24104f)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:54px 54px}
+header{position:sticky;top:12px;z-index:20;max-width:1180px;margin:14px auto 0;padding:9px 14px;background:rgba(255,255,255,.96);border:1px solid #ffffffaa;border-radius:50px;box-shadow:0 12px 38px #02091f55;backdrop-filter:blur(16px)}
+nav{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+nav a{color:#182b50;text-decoration:none;font-size:14px;font-weight:750;padding:13px 17px;border-radius:32px;transition:.2s}
+nav a:hover{background:#edf3ff;color:#7a31e7;transform:translateY(-2px)}
+nav a.active{color:#fff;background:linear-gradient(110deg,#a52df3,#278cf5);box-shadow:0 6px 18px #823be755}
+main{max-width:1180px;margin:auto;padding:38px 22px 72px}
+.hero{position:relative;overflow:hidden;text-align:center;padding:52px 24px 46px;border:1px solid #9bdcff66;border-radius:30px;background:linear-gradient(120deg,rgba(8,35,91,.97),rgba(29,40,112,.96) 55%,rgba(58,29,111,.97));box-shadow:0 22px 58px #02091f66,inset 0 0 50px #5a9cff12}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero:before{width:330px;height:330px;left:-100px;top:-140px;background:radial-gradient(circle,rgba(0,220,255,.28),transparent 68%)}
+.hero:after{width:360px;height:360px;right:-110px;bottom:-210px;background:radial-gradient(circle,rgba(215,62,255,.25),transparent 68%)}
+.eyebrow{position:relative;display:inline-block;padding:9px 16px;border:1px solid #9bdcff88;border-radius:30px;background:#ffffff12;color:#c8f2ff;font-size:12px;font-weight:850;letter-spacing:2px}
+h1{position:relative;margin:18px 0 10px;font-size:clamp(38px,6vw,66px);line-height:1.04;letter-spacing:-1.8px}
+h1 span{background:linear-gradient(90deg,#65e6f5,#c59aff,#ff8cdb);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{position:relative;max-width:800px;margin:0 auto;color:#e0eaff;font-size:clamp(16px,2vw,19px);line-height:1.7}
+.hero-tags{position:relative;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hero-tags span{padding:10px 15px;border-radius:15px;border:1px solid #a8e5ff55;background:#071b4b88;color:#effaff;font-size:13px;font-weight:750}
+.section{margin-top:34px}
+.section-heading{text-align:center;margin:0 auto 20px;max-width:760px}
+.section-heading h2{font-size:clamp(23px,3vw,31px);margin:0 0 8px}
+.section-heading p{margin:0;color:#d5e3ff;line-height:1.6}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.panel{padding:25px;border:1px solid #9bdcff55;border-radius:23px;background:linear-gradient(135deg,rgba(12,35,88,.94),rgba(35,27,91,.94));box-shadow:0 15px 38px #02091f55}
+.panel h2{margin:0 0 12px;font-size:22px;color:#fff}
+.panel p{margin:0;color:#dce8ff;line-height:1.75}
+.mission{display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,rgba(8,115,139,.94),rgba(34,45,119,.96))}
+.mission .big-icon{font-size:38px;margin-bottom:10px}
+.components{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.component{padding:21px;border:1px solid #b9dfff66;border-radius:20px;background:linear-gradient(145deg,rgba(15,42,96,.96),rgba(44,34,105,.96));box-shadow:0 12px 30px #02091f44}
+.component .icon{font-size:29px;margin-bottom:10px}
+.component h3{font-size:17px;margin:0 0 8px;color:#fff}
+.component p{font-size:14px;line-height:1.6;color:#d4e1fb;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.stat{padding:22px 14px;text-align:center;border:1px solid #a9dfff66;border-radius:20px;background:linear-gradient(145deg,rgba(9,53,104,.95),rgba(53,34,113,.95))}
+.stat strong{display:block;font-size:clamp(30px,4vw,42px);font-weight:950;color:#7cecff;line-height:1.1}
+.stat span{display:block;margin-top:8px;font-size:13px;color:#e0eaff;line-height:1.4;font-weight:700}
+.research-note{margin:14px 0 0;text-align:center;color:#c8d9f5;font-size:13px;line-height:1.6}
+.creators{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.person{display:flex;align-items:center;gap:17px;padding:22px;border-radius:21px;border:1px solid #b8dfff66;background:linear-gradient(130deg,rgba(12,42,99,.96),rgba(48,34,111,.96))}
+.avatar{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(135deg,#5ce3ef,#a16aff);color:#10265c;font-size:25px;font-weight:950}
+.person h3{margin:0 0 5px;font-size:18px}
+.person p{margin:0;color:#d2e2ff;font-size:14px}
+.closing{text-align:center;padding:31px 20px;border:1px solid #a5dfff66;border-radius:25px;background:linear-gradient(110deg,rgba(5,111,139,.92),rgba(48,38,123,.94));box-shadow:0 15px 38px #02091f55}
+.closing h2{font-size:clamp(23px,3vw,31px);margin:0 0 9px}
+.closing p{max-width:690px;margin:0 auto;color:#e2efff;line-height:1.65}
+.links{display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin-top:20px}
+.links a{display:inline-block;padding:12px 18px;border-radius:14px;text-decoration:none;font-weight:850;font-size:14px;color:#142b60;background:#fff;transition:.2s}
+.links a:hover{transform:translateY(-2px);box-shadow:0 8px 20px #02091f55}
+.links a.primary{background:linear-gradient(110deg,#f7d66c,#ff9d55);color:#172653}
+footer{text-align:center;color:#b9c9eb;font-size:13px;margin-top:29px}
+@media(max-width:850px){.about-grid{grid-template-columns:1fr}.components{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){header{margin:8px 10px 0;border-radius:24px}nav a{font-size:11px;padding:9px 10px}main{padding:25px 13px 50px}.hero{padding:40px 17px 34px}.components{grid-template-columns:1fr}.creators{grid-template-columns:1fr}.panel{padding:20px}}
+</style>
+</head>
+<body>
+<header>
+<nav aria-label="Main navigation">
+<a href="./index.html">Home</a>
+<a href="./metaphor-dictionary.html">Metaphor Dictionary</a>
+<a href="./decoding-strategies.html">Decoding Strategies</a>
+<a href="./interactive-tasks.html">Interactive Tasks</a>
+<a href="./self-assessment.html">Self-Assessment</a>
+<a class="active" href="./about.html">About</a>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="eyebrow">✦ DMLT • DISCOVER • UNDERSTAND • CONNECT ✦</div>
+  <h1>ABOUT <span>DMLT</span></h1>
+  <p class="lead">Digital Metaphor Literacy Toolkit is an educational project that helps learners recognise, interpret, and understand metaphors used in English digital communication.</p>
+  <div class="hero-tags">
+    <span>💬 Real digital language</span>
+    <span>🔎 Context-based learning</span>
+    <span>🎮 Interactive practice</span>
+  </div>
+</section>
+
+<section class="section about-grid">
+  <article class="panel">
+    <h2>📘 What is DMLT?</h2>
+    <p>The Digital Metaphor Literacy Toolkit (DMLT) was developed as part of the research project “Decoding Metaphors in English Social Media Comments”. It brings together digital and printable learning resources that help students move beyond literal translation and understand figurative meaning through context. Learners explore how metaphors communicate emotions, opinions, humour, and ideas in online conversations.</p>
+  </article>
+  <article class="panel mission">
+    <div class="big-icon">🎯</div>
+    <h2>Our Aim</h2>
+    <p>To support students in identifying, interpreting, and using metaphorical expressions in digital communication through authentic examples, guided strategies, and engaging learning activities.</p>
+  </article>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <h2>WHY DMLT?</h2>
+    <p>Online expressions cannot always be understood word for word. Context helps reveal what people really mean.</p>
+  </div>
+  <div class="about-grid">
+    <article class="panel">
+      <h2>💡 The Challenge</h2>
+      <p>Social media is full of creative expressions, internet slang, and figurative language. A learner may know every word in a comment but still misunderstand its message if it is interpreted literally.</p>
+    </article>
+    <article class="panel">
+      <h2>🚀 Our Approach</h2>
+      <p>DMLT turns metaphor learning into an active process: notice the expression, examine its context, identify its figurative meaning, explain it, and practise using it in communication.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <h2>WHAT'S INSIDE THE TOOLKIT?</h2>
+    <p>Explore connected resources designed to make digital metaphor learning clear, practical, and engaging.</p>
+  </div>
+  <div class="components">
+    <article class="component"><div class="icon">📚</div><h3>Metaphor Dictionary</h3><p>A collection of metaphorical expressions with explanations of their meanings and use in context.</p></article>
+    <article class="component"><div class="icon">🔎</div><h3>Decoding Strategies</h3><p>A six-step guide that helps learners use context clues to interpret unfamiliar metaphors.</p></article>
+    <article class="component"><div class="icon">🎮</div><h3>Interactive Tasks</h3><p>Practice activities and the Digital Metaphor Detective Game, where learners decode expressions and earn XP.</p></article>
+    <article class="component"><div class="icon">📝</div><h3>Self-Assessment</h3><p>A reflection tool that helps learners check their confidence and identify skills to practise further.</p></article>
+    <article class="component"><div class="icon">🎥</div><h3>Learning Videos</h3><p>Short explanatory videos that introduce selected metaphors through visual examples.</p></article>
+    <article class="component"><div class="icon">📖</div><h3>Printable Materials</h3><p>An illustrated handbook, metaphor cards, and workbook activities for classroom and independent learning.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <h2>RESEARCH AT A GLANCE</h2>
+    <p>The toolkit was informed by the analysis of social media expressions and students’ learning needs.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong>50</strong><span>Metaphorical expressions analysed</span></div>
+    <div class="stat"><strong>50</strong><span>Grade 11 students took part in the questionnaire and initial assessment</span></div>
+    <div class="stat"><strong>11/20</strong><span>Average pre-test result (55%)</span></div>
+    <div class="stat"><strong>18–20/20</strong><span>Post-test results range (90–100%)</span></div>
+  </div>
+  <p class="research-note">The assessment figures describe the results reported for the 50-student group in this research project.</p>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <h2>MEET THE CREATORS</h2>
+    <p>The student researchers behind the project “Decoding Metaphors in English Social Media Comments”.</p>
+  </div>
+  <div class="creators">
+    <article class="person"><div class="avatar">N</div><div><h3>Nursaya Aibekkyzy</h3><p>Student Researcher • Grade 11</p></div></article>
+    <article class="person"><div class="avatar">M</div><div><h3>Meirzhan Kenesbay</h3><p>Student Researcher • Grade 11</p></div></article>
+  </div>
+</section>
+
+<section class="section closing">
+  <h2>Ready to become a Metaphor Detective?</h2>
+  <p>Explore the toolkit, follow the clues, and discover how context can unlock the hidden meaning behind digital language.</p>
+  <div class="links">
+    <a class="primary" href="./metaphor-dictionary.html">Explore the Dictionary</a>
+    <a href="./decoding-strategies.html">Learn the Strategies</a>
+    <a href="./interactive-tasks.html">Start Practising</a>
+  </div>
+</section>
+
+<footer>Digital Metaphor Literacy Toolkit • Decode Metaphors. Explore Meanings. Think Critically.</footer>
+</main>
+</body>
+</html>
