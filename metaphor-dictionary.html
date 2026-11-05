@@ -78,10 +78,10 @@ h1 span{background:linear-gradient(100deg,#12365e 5%,#6330cf 58%,#087bc8);-webki
     <nav aria-label="Main navigation">
       <a href="./index.html">Home</a>
       <a href="./metaphor-dictionary.html" class="active">Metaphor Dictionary</a>
-      <a href="#">Decoding Strategies</a>
-      <a href="#">Interactive Tasks</a>
-      <a href="#">Self-Assessment</a>
-      <a href="#">About</a>
+      <a href="./decoding-strategies.html">Decoding Strategies</a>
+      <a href="./interactive-tasks.html">Interactive Tasks</a>
+      <a href="./self-assessment.html">Self-Assessment</a>
+      <a href="./about.html">About</a>
     </nav>
   </div>
 </header>
@@ -127,56 +127,56 @@ h1 span{background:linear-gradient(100deg,#12365e 5%,#6330cf 58%,#087bc8);-webki
   // The index contains examples visible in the DMLT project materials.
   // Category links let learners continue exploring the full collection.
   const metaphors = [
-{ title: '“Dreams are worth chasing”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', video: './videos/01-dreams-are-worth-chasing.mp4', keywords: 'dreams goals ambitions chasing hope motivation' },
-    { title: '“I’m drowning in homework”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', video: './videos/02-drowning-in-homework.mp4', keywords: 'drowning homework overloaded too much work pressure' },
-    { title: '“In my feelings”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', video: './videos/03-in-my-feelings.mp4', keywords: 'feelings emotions mood' },
-    { title: '“The way tech is evolving blows my mind”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', video: './videos/04-tech-is-evolving.mp4', keywords: 'technology tech evolving blows mind surprise amazed' },
-    { title: '“I think the world is healing”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', video: './videos/05-world-is-healing.mp4', keywords: 'world healing hope recovery' },
-    { title: '“They are angels without wings”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', video: './videos/06-angels-without-wings.mp4', keywords: 'angels kindness helpful people good' },
-    { title: '“He is a red flag”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', video: './videos/07-red-flag.mp4', keywords: 'red flag warning danger relationship' },
-    { title: '“This is a green flag”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', video: './videos/08-green-flag.mp4', keywords: 'green flag positive sign good quality' },
-    { title: '“Drowning in stress”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', video: './09-drowning-in-stress.mp4', keywords: 'stress stressed pressure overwhelmed anxiety' },
-    {"title": "“Break the ice”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "video": "./videos/01-break-the-ice.mp4", "keywords": " break the ice "},
-    {"title": "“Spill the beans”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "video": "./videos/02-spill-the-beans.mp4", "keywords": " spill the beans "},
-    {"title": "“Walking on eggshells”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "video": "./videos/03-walking-on-eggshells.mp4", "keywords": " walking on eggshells "},
-    {"title": "“Old is gold”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "video": "./videos/04-old-is-gold.mp4", "keywords": " old is gold "},
-    {"title": "“He nailed it”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "video": "./videos/05-he-nailed-it.mp4", "keywords": " he nailed it "},
-    {"title": "“She’s on fire”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "video": "./videos/06-shes-on-fire.mp4", "keywords": " she s on fire "},
-    {"title": "“The tea is hot”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/01-the-tea-is-hot.mp4", "keywords": " the tea is hot "},
-    {"title": "“Living rent-free in my head”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/02-living-rent-free-in-my-head.mp4", "keywords": " living rent-free in my head "},
-    {"title": "“Touch grass”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/03-touch-grass.mp4", "keywords": " touch grass "},
-    {"title": "“That hit different”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/04-that-hit-different.mp4", "keywords": " that hit different "},
-    {"title": "“This video is gold”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/05-this-video-is-gold.mp4", "keywords": " this video is gold "},
-    {"title": "“Cooked”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/06-cooked.mp4", "keywords": " cooked "},
-    {"title": "“He’s cooking”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/07-hes-cooking.mp4", "keywords": " he s cooking "},
-    {"title": "“Information is a digital river”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/08-information-is-a-digital-river.mp4", "keywords": " information is a digital river "},
-    {"title": "“The editing is top-tier”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/09-the-editing-is-top-tier.mp4", "keywords": " the editing is top-tier "},
-    {"title": "“This channel is top notch”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "video": "./videos/10-this-channel-is-top-notch.mp4", "keywords": " this channel is top notch "},
-    {"title": "“A simulation”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/01-a-simulation.mp4", "keywords": " a simulation "},
-    {"title": "“Glitch in the Matrix”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/01-glitch-in-the-matrix.mp4", "keywords": " glitch in the matrix "},
-    {"title": "“Maybe your feed knows your heart”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/03-maybe-your-feed-knows-your-heart.mp4", "keywords": " maybe your feed knows your heart "},
-    {"title": "“The future is AI”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/04-the-future-is-ai.mp4", "keywords": " the future is ai "},
-    {"title": "“Every match is Prime”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/05-every-match-is-prime.mp4", "keywords": " every match is prime "},
-    {"title": "“It’s peak.”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/06-its-peak.mp4", "keywords": " it s peak  "},
-    {"title": "“He is the automation”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/07-he-is-the-automation.mp4", "keywords": " he is the automation "},
-    {"title": "“He is a thinking machine”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/08-he-is-a-thinking-machine.mp4", "keywords": " he is a thinking machine "},
-    {"title": "“The balance lamp is actually the game changer”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/09-the-balance-lamp-game-changer.mp4", "keywords": " the balance lamp is actually the game changer "},
-    {"title": "“An absolute engineering behemoth”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/10-absolute-engineering-behemoth.mp4", "keywords": " an absolute engineering behemoth "},
-    {"title": "“The internet is a cloud of knowledge”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "video": "./videos/11-the-internet-is-a-cloud-of-knowledge.mp4", "keywords": " the internet is a cloud of knowledge "},
-    {"title": "“She is a fashion queen”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/01-she-is-a-fashion-queen.mp4", "keywords": " she is a fashion queen "},
-    {"title": "“She is fire”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/02-she-is-fire.mp4", "keywords": " she is fire "},
-    {"title": "“He is God of Soccer”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/03-god-of-soccer.mp4", "keywords": " he is god of soccer "},
-    {"title": "“He is the king”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/04-he-is-the-king.mp4", "keywords": " he is the king "},
-    {"title": "“She is the pop culture icon forever”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/05-pop-culture-icon-forever.mp4", "keywords": " she is the pop culture icon forever "},
-    {"title": "“She was the blueprint”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/06-she-was-the-blueprint.mp4", "keywords": " she was the blueprint "},
-    {"title": "“You’re the inspiration”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/07-you-are-the-inspiration.mp4", "keywords": " you re the inspiration "},
-    {"title": "“A circus”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/08-a-circus.mp4", "keywords": " a circus "},
-    {"title": "“A zoo”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/09-a-zoo.mp4", "keywords": " a zoo "},
-    {"title": "“Serving face”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/14-serving-face.mp4", "keywords": " serving face "},
-    {"title": "“Mystery boxes”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/11-mystery-boxes.mp4", "keywords": " mystery boxes "},
-    {"title": "“Enemy of unemployment”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/12-enemy-of-unemployment.mp4", "keywords": " enemy of unemployment "},
-    {"title": "“Spitting bars every second”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/13-spitting-bars-every-second.mp4", "keywords": " spitting bars every second "},
-    {"title": "“You are a hidden gem”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "video": "./videos/14-you-are-a-hidden-gem.mp4", "keywords": " you are a hidden gem "}
+{ title: '“Dreams are worth chasing”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'dreams goals ambitions chasing hope motivation' },
+    { title: '“I’m drowning in homework”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'drowning homework overloaded too much work pressure' },
+    { title: '“In my feelings”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'feelings emotions mood' },
+    { title: '“The way tech is evolving blows my mind”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'technology tech evolving blows mind surprise amazed' },
+    { title: '“I think the world is healing”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'world healing hope recovery' },
+    { title: '“They are angels without wings”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'angels kindness helpful people good' },
+    { title: '“He is a red flag”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'red flag warning danger relationship' },
+    { title: '“This is a green flag”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'green flag positive sign good quality' },
+    { title: '“Drowning in stress”', category: 'Emotions & Reactions', url: './emotions-and-reactions.html', keywords: 'stress stressed pressure overwhelmed anxiety' },
+    {"title": "“Break the ice”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " break the ice "},
+    {"title": "“Spill the beans”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " spill the beans "},
+    {"title": "“Walking on eggshells”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " walking on eggshells "},
+    {"title": "“Old is gold”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " old is gold "},
+    {"title": "“He nailed it”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " he nailed it "},
+    {"title": "“She’s on fire”", "category": "Everyday Metaphors", "url": "./everyday-metaphors.html", "keywords": " she s on fire "},
+    {"title": "“The tea is hot”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " the tea is hot "},
+    {"title": "“Living rent-free in my head”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " living rent-free in my head "},
+    {"title": "“Touch grass”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " touch grass "},
+    {"title": "“That hit different”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " that hit different "},
+    {"title": "“This video is gold”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " this video is gold "},
+    {"title": "“Cooked”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " cooked "},
+    {"title": "“He’s cooking”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " he s cooking "},
+    {"title": "“Information is a digital river”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " information is a digital river "},
+    {"title": "“The editing is top-tier”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " the editing is top-tier "},
+    {"title": "“This channel is top notch”", "category": "Social Media & Digital", "url": "./social-media-digital.html", "keywords": " this channel is top notch "},
+    {"title": "“A simulation”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " a simulation "},
+    {"title": "“Glitch in the Matrix”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " glitch in the matrix "},
+    {"title": "“Maybe your feed knows your heart”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " maybe your feed knows your heart "},
+    {"title": "“The future is AI”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " the future is ai "},
+    {"title": "“Every match is Prime”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " every match is prime "},
+    {"title": "“It’s peak.”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " it s peak  "},
+    {"title": "“He is the automation”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " he is the automation "},
+    {"title": "“He is a thinking machine”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " he is a thinking machine "},
+    {"title": "“The balance lamp is actually the game changer”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " the balance lamp is actually the game changer "},
+    {"title": "“An absolute engineering behemoth”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " an absolute engineering behemoth "},
+    {"title": "“The internet is a cloud of knowledge”", "category": "Internet & Technology", "url": "./internet-and-technology.html", "keywords": " the internet is a cloud of knowledge "},
+    {"title": "“She is a fashion queen”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " she is a fashion queen "},
+    {"title": "“She is fire”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " she is fire "},
+    {"title": "“He is God of Soccer”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " he is god of soccer "},
+    {"title": "“He is the king”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " he is the king "},
+    {"title": "“She is the pop culture icon forever”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " she is the pop culture icon forever "},
+    {"title": "“She was the blueprint”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " she was the blueprint "},
+    {"title": "“You’re the inspiration”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " you re the inspiration "},
+    {"title": "“A circus”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " a circus "},
+    {"title": "“A zoo”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " a zoo "},
+    {"title": "“Serving face”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " serving face "},
+    {"title": "“Mystery boxes”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " mystery boxes "},
+    {"title": "“Enemy of unemployment”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " enemy of unemployment "},
+    {"title": "“Spitting bars every second”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " spitting bars every second "},
+    {"title": "“You are a hidden gem”", "category": "Creative & Humorous", "url": "./creative-and-humorous.html", "keywords": " you are a hidden gem "}
   ];
 
   const categoryData = [
@@ -210,7 +210,7 @@ h1 span{background:linear-gradient(100deg,#12365e 5%,#6330cf 58%,#087bc8);-webki
 
     list.replaceChildren();
     const matches = [
-      ...metaphorMatches.map(item => ({ title: item.title, description: item.category + ' · Watch video', url: item.video || item.url })),
+      ...metaphorMatches.map(item => ({ title: item.title, description: item.category + ' · Open this category to watch the video', url: item.url })),
       ...categoryMatches.map(item => ({ title: item.title, description: item.description, url: item.url }))
     ];
 
