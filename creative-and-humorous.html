@@ -60,6 +60,35 @@ main{width:min(1320px,calc(100% - 56px));margin:34px auto 65px;position:relative
  .section-title{font-size:24px;margin:22px 0 13px}.cards{grid-template-columns:1fr;gap:14px}
  .card{padding:14px}.card h2{font-size:19px}.number{flex-basis:38px;width:38px;height:38px;font-size:17px}
 }
+
+/* Decorative creative illustrations along the page edges */
+.side-art{position:fixed;z-index:0;top:235px;width:190px;height:340px;pointer-events:none;opacity:.94;filter:drop-shadow(0 12px 18px rgba(90,35,170,.22))}
+.side-art.left{left:10px}
+.side-art.right{right:10px;top:275px;width:220px;height:330px}
+.side-art svg{width:100%;height:100%;overflow:visible}
+@media(max-width:1100px){.side-art{width:130px;opacity:.5}.side-art.left{left:-25px}.side-art.right{right:-28px;width:150px}}
+@media(max-width:700px){.side-art{display:none}}
+
+.category-navigation{
+  max-width:1320px;margin:42px auto 36px;padding:28px 24px 30px;
+  border:1px solid rgba(255,255,255,.72);border-radius:25px;
+  background:rgba(250,252,255,.96);box-shadow:0 16px 38px rgba(25,8,67,.25);
+  color:#253c72;position:relative;z-index:1
+}
+.category-navigation h2{margin:0 0 8px;text-align:center;font-size:clamp(21px,3vw,28px);color:#253c72}
+.category-navigation p{margin:0 0 20px;text-align:center;color:#61739a;line-height:1.5}
+.category-navigation .category-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.category-navigation a{
+  display:flex;align-items:center;justify-content:center;min-height:76px;padding:14px 12px;
+  border:1px solid #e2d8f7;border-radius:17px;
+  background:linear-gradient(135deg,#f1e8ff,#ffe8f7);color:#293f73;
+  text-align:center;text-decoration:none;font-weight:800;line-height:1.35;
+  transition:transform .2s,box-shadow .2s,background .2s
+}
+.category-navigation a:hover{transform:translateY(-3px);background:linear-gradient(135deg,#e7d8ff,#ffdcf2);box-shadow:0 9px 20px rgba(142,65,220,.17)}
+@media(max-width:800px){.category-navigation .category-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.category-navigation{margin:28px 12px;padding:21px 14px}.category-navigation .category-links{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -71,6 +100,44 @@ main{width:min(1320px,calc(100% - 56px));margin:34px auto 65px;position:relative
     <a href="self-assessment.html">Self-Assessment</a><a href="about.html">About</a>
   </nav>
 </header>
+
+<div class="side-art left" aria-hidden="true">
+<svg viewBox="0 0 190 340" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="creativeMask" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffb4ec"/><stop offset="1" stop-color="#9a55e8"/></linearGradient>
+  <linearGradient id="creativePen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe18b"/><stop offset="1" stop-color="#ff72cb"/></linearGradient>
+ </defs>
+ <g opacity=".95">
+  <path d="M36 56Q68 15 103 48Q129 75 98 105Q69 132 35 105Q12 83 36 56Z" fill="url(#creativeMask)" fill-opacity=".75" stroke="#fff0ff" stroke-width="3"/>
+  <path d="M49 79Q58 68 68 79M83 79Q92 68 101 79" fill="none" stroke="#57358e" stroke-width="4" stroke-linecap="round"/>
+  <path d="M61 94Q76 106 91 94" fill="none" stroke="#57358e" stroke-width="4" stroke-linecap="round"/>
+  <path d="M125 36L134 13L143 36L166 45L143 54L134 77L125 54L102 45Z" fill="#ffe28d" stroke="#fff5d4" stroke-width="2"/>
+  <circle cx="33" cy="150" r="8" fill="#ff9fda"/><circle cx="144" cy="125" r="6" fill="#77e8ff"/>
+  <path d="M24 185Q80 153 137 185T170 246" fill="none" stroke="#ffb4ec" stroke-width="3" stroke-dasharray="6 8"/>
+ </g>
+ <g transform="translate(28 220) rotate(-12 60 45)">
+  <path d="M8 78L83 4Q91 -3 99 5L112 18Q119 26 111 34L36 108L8 116Z" fill="url(#creativePen)" stroke="#fff3ff" stroke-width="3"/>
+  <path d="M8 116L15 88L36 108Z" fill="#57358e"/>
+  <path d="M83 4L99 5L112 18L96 18Z" fill="#fff0ff" opacity=".9"/>
+  <path d="M20 91L91 20" stroke="#fff8ff" stroke-width="4" opacity=".8"/>
+ </g>
+</svg>
+</div>
+<div class="side-art right" aria-hidden="true">
+<svg viewBox="0 0 220 330" xmlns="http://www.w3.org/2000/svg">
+ <defs><linearGradient id="creativeBubble" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8beeff"/><stop offset="1" stop-color="#b77bff"/></linearGradient></defs>
+ <g>
+  <path d="M46 28Q46 8 67 8H171Q192 8 192 28V104Q192 124 171 124H105L78 148V124H67Q46 124 46 104Z" fill="url(#creativeBubble)" fill-opacity=".76" stroke="#f5eaff" stroke-width="3"/>
+  <circle cx="86" cy="66" r="7" fill="#fff"/><circle cx="119" cy="66" r="7" fill="#fff"/><circle cx="152" cy="66" r="7" fill="#fff"/>
+  <path d="M33 190Q54 153 82 180Q105 149 128 178Q153 152 180 184Q203 216 171 243Q139 274 103 250Q66 275 37 245Q14 220 33 190Z" fill="#ff9edc" fill-opacity=".72" stroke="#ffeaff" stroke-width="3"/>
+  <path d="M66 211Q80 194 94 211Q108 194 122 211" fill="none" stroke="#713a9e" stroke-width="4" stroke-linecap="round"/>
+  <path d="M91 229Q106 242 121 229" fill="none" stroke="#713a9e" stroke-width="4" stroke-linecap="round"/>
+  <path d="M19 291L27 272L35 291L54 299L35 307L27 326L19 307L0 299Z" fill="#ffe18b"/>
+  <circle cx="190" cy="155" r="6" fill="#ffe18b"/><circle cx="18" cy="150" r="5" fill="#80eaff"/>
+ </g>
+</svg>
+</div>
+
 <main>
   <section class="hero">
     <a class="back" href="metaphor-dictionary.html">← Back to Metaphor Dictionary</a>
@@ -96,5 +163,17 @@ main{width:min(1320px,calc(100% - 56px));margin:34px auto 65px;position:relative
   </section>
   <p class="footer-note">Digital Metaphor Literacy Toolkit · Creative &amp; Humorous</p>
 </main>
+
+<section class="category-navigation" aria-label="Explore other metaphor categories">
+  <h2>Explore More Metaphor Categories</h2>
+  <p>Continue exploring different types of metaphors in the DMLT collection.</p>
+  <div class="category-links">
+    <a href="./everyday-metaphors.html">☁️ Everyday Metaphors</a>
+    <a href="./social-media-digital.html">📱 Social Media &amp; Digital</a>
+    <a href="./emotions-and-reactions.html">💖 Emotions &amp; Reactions</a>
+    <a href="./internet-and-technology.html">💻 Internet &amp; Technology</a>
+  </div>
+</section>
+
 </body>
 </html>
