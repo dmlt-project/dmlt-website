@@ -75,4 +75,79 @@ video{display:block;width:100%;max-height:420px;aspect-ratio:16/9;object-fit:con
 
 </section>
 </main>
+
+<style>
+/* Related metaphor categories — end-of-page navigation */
+.category-navigation{
+  max-width:1325px;
+  margin:42px auto 36px;
+  padding:28px 24px 30px;
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:25px;
+  background:rgba(242,247,255,.94);
+  box-shadow:0 16px 38px rgba(12,34,85,.20);
+  color:#17365d;
+}
+.category-navigation h2{
+  margin:0 0 8px;
+  text-align:center;
+  font-size:clamp(21px,3vw,28px);
+  color:#17365d;
+}
+.category-navigation p{
+  margin:0 0 20px;
+  text-align:center;
+  color:#59769b;
+  line-height:1.5;
+}
+.category-navigation .category-links{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:13px;
+}
+.category-navigation a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:76px;
+  padding:14px 12px;
+  border:1px solid #d9e5fa;
+  border-radius:17px;
+  background:linear-gradient(135deg,#f0eaff,#e8f5ff);
+  color:#193b68;
+  text-align:center;
+  text-decoration:none;
+  font-weight:800;
+  line-height:1.35;
+  transition:transform .2s,box-shadow .2s,background .2s;
+}
+.category-navigation a:hover{
+  transform:translateY(-3px);
+  background:linear-gradient(135deg,#e6d9ff,#d9f3ff);
+  box-shadow:0 9px 20px rgba(57,85,160,.16);
+}
+.category-navigation a.current{
+  border-color:#9e8af7;
+  background:linear-gradient(135deg,#e7dcff,#dceeff);
+  color:#5934bd;
+}
+@media(max-width:800px){
+  .category-navigation .category-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:460px){
+  .category-navigation{margin:28px 12px;padding:21px 14px}
+  .category-navigation .category-links{grid-template-columns:1fr}
+}
+</style>
+<section class="category-navigation" aria-label="Explore other metaphor categories">
+  <h2>Explore More Metaphor Categories</h2>
+  <p>Continue exploring different types of metaphors in the DMLT collection.</p>
+  <div class="category-links">
+    <a href="./social-media-digital.html">📱 Social Media &amp; Digital</a>
+    <a href="./emotions-and-reactions.html">💗 Emotions &amp; Reactions</a>
+    <a href="./internet-and-technology.html">💻 Internet &amp; Technology</a>
+    <a href="./creative-and-humorous.html">🎭 Creative &amp; Humorous</a>
+  </div>
+</section>
+
 </body></html>
