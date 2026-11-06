@@ -95,6 +95,35 @@ main{width:min(1320px,calc(100% - 56px));margin:34px auto 65px;position:relative
   .cards{grid-template-columns:1fr;gap:14px}.card{padding:14px}.card h2{font-size:19px}
   .number{flex-basis:38px;width:38px;height:38px;font-size:17px}
 }
+
+/* Decorative technology illustrations along the page edges */
+.side-art{position:fixed;z-index:0;top:245px;width:190px;height:330px;pointer-events:none;opacity:.92;filter:drop-shadow(0 12px 18px rgba(0,110,190,.20))}
+.side-art.left{left:12px}
+.side-art.right{right:12px;top:270px;width:220px;height:330px}
+.side-art svg{width:100%;height:100%;overflow:visible}
+@media(max-width:1100px){.side-art{width:130px;opacity:.48}.side-art.left{left:-24px}.side-art.right{right:-28px;width:150px}}
+@media(max-width:700px){.side-art{display:none}}
+
+.category-navigation{
+  max-width:1320px;margin:42px auto 36px;padding:28px 24px 30px;
+  border:1px solid rgba(255,255,255,.72);border-radius:25px;
+  background:rgba(248,252,255,.96);box-shadow:0 16px 38px rgba(0,8,35,.28);
+  color:#12365f;position:relative;z-index:1
+}
+.category-navigation h2{margin:0 0 8px;text-align:center;font-size:clamp(21px,3vw,28px);color:#12365f}
+.category-navigation p{margin:0 0 20px;text-align:center;color:#52718e;line-height:1.5}
+.category-navigation .category-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.category-navigation a{
+  display:flex;align-items:center;justify-content:center;min-height:76px;padding:14px 12px;
+  border:1px solid #d6e7fa;border-radius:17px;
+  background:linear-gradient(135deg,#e5f5ff,#eee9ff);color:#12365f;
+  text-align:center;text-decoration:none;font-weight:800;line-height:1.35;
+  transition:transform .2s,box-shadow .2s,background .2s
+}
+.category-navigation a:hover{transform:translateY(-3px);background:linear-gradient(135deg,#d7efff,#e4dcff);box-shadow:0 9px 20px rgba(22,142,232,.18)}
+@media(max-width:800px){.category-navigation .category-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.category-navigation{margin:28px 12px;padding:21px 14px}.category-navigation .category-links{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -111,6 +140,46 @@ main{width:min(1320px,calc(100% - 56px));margin:34px auto 65px;position:relative
     <a href="about.html">About</a>
   </nav>
 </header>
+
+<div class="side-art left" aria-hidden="true">
+<svg viewBox="0 0 190 330" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="techOrb" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#43e5ff"/><stop offset="1" stop-color="#3476ed"/></linearGradient>
+  <linearGradient id="techPhone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a9f8ff"/><stop offset="1" stop-color="#258de8"/></linearGradient>
+ </defs>
+ <g opacity=".95">
+  <circle cx="88" cy="115" r="66" fill="#58dfff" fill-opacity=".13" stroke="#a9f4ff" stroke-width="3"/>
+  <ellipse cx="88" cy="115" rx="29" ry="66" fill="none" stroke="#a9f4ff" stroke-width="2.5"/>
+  <path d="M23 115H153 M34 83Q88 103 142 83 M34 147Q88 127 142 147" fill="none" stroke="#a9f4ff" stroke-width="2.5"/>
+  <g fill="#fff"><circle cx="45" cy="72" r="5"/><circle cx="137" cy="55" r="4"/><circle cx="151" cy="160" r="5"/><circle cx="34" cy="176" r="4"/></g>
+  <path d="M45 72L88 49L137 55L151 160L88 181L34 176Z" fill="none" stroke="#63ddff" stroke-width="2" opacity=".8"/>
+ </g>
+ <g transform="translate(38 205) rotate(-9 48 48)">
+  <rect x="8" y="0" width="86" height="112" rx="17" fill="url(#techPhone)" stroke="#eaffff" stroke-width="4"/>
+  <rect x="17" y="14" width="68" height="82" rx="9" fill="#102b64"/>
+  <g fill="#54e4ff"><rect x="28" y="27" width="15" height="15" rx="3"/><rect x="51" y="27" width="15" height="15" rx="3"/><rect x="28" y="50" width="15" height="15" rx="3"/><rect x="51" y="50" width="15" height="15" rx="3"/></g>
+  <circle cx="51" cy="104" r="3" fill="#fff"/>
+ </g>
+</svg>
+</div>
+<div class="side-art right" aria-hidden="true">
+<svg viewBox="0 0 220 330" xmlns="http://www.w3.org/2000/svg">
+ <defs><linearGradient id="techLaptop" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b7faff"/><stop offset="1" stop-color="#258de8"/></linearGradient></defs>
+ <g transform="translate(14 20)">
+  <path d="M54 23Q54 5 73 5H155Q174 5 174 23V91H54Z" fill="#65dfff" fill-opacity=".20" stroke="#d9fbff" stroke-width="4"/>
+  <rect x="66" y="18" width="96" height="61" rx="6" fill="#102d68" stroke="#a9f4ff" stroke-width="3"/>
+  <path d="M111 34L135 49L111 64Z" fill="#5ce8ff"/>
+  <path d="M42 96H184L202 111Q205 117 194 117H29Q18 117 23 110Z" fill="url(#techLaptop)" stroke="#eaffff" stroke-width="3"/>
+  <g transform="translate(88 151)">
+   <path d="M25 9Q25 -4 39 -4H85Q99 -4 99 9V42Q99 55 85 55H59L43 70V55H39Q25 55 25 42Z" fill="#238de8" stroke="#eaffff" stroke-width="3"/>
+   <circle cx="48" cy="26" r="4" fill="#fff"/><circle cx="63" cy="26" r="4" fill="#fff"/><circle cx="78" cy="26" r="4" fill="#fff"/>
+  </g>
+  <g fill="#fff"><path d="M28 166L35 149L42 166L59 173L42 180L35 197L28 180L11 173Z"/><circle cx="178" cy="151" r="5"/><circle cx="193" cy="183" r="4"/></g>
+  <path d="M12 239Q70 204 128 240T208 239" fill="none" stroke="#7deaff" stroke-width="3" stroke-dasharray="6 8"/>
+ </g>
+</svg>
+</div>
+
 <main>
   <section class="hero">
     <a class="back" href="metaphor-dictionary.html">← Back to Metaphor Dictionary</a>
@@ -133,5 +202,17 @@ main{width:min(1320px,calc(100% - 56px));margin:34px auto 65px;position:relative
   </section>
   <p class="footer-note">Digital Metaphor Literacy Toolkit · Internet &amp; Technology</p>
 </main>
+
+<section class="category-navigation" aria-label="Explore other metaphor categories">
+  <h2>Explore More Metaphor Categories</h2>
+  <p>Continue exploring different types of metaphors in the DMLT collection.</p>
+  <div class="category-links">
+    <a href="./everyday-metaphors.html">☁️ Everyday Metaphors</a>
+    <a href="./social-media-digital.html">📱 Social Media &amp; Digital</a>
+    <a href="./emotions-and-reactions.html">💖 Emotions &amp; Reactions</a>
+    <a href="./creative-and-humorous.html">🎭 Creative &amp; Humorous</a>
+  </div>
+</section>
+
 </body>
 </html>
